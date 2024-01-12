@@ -1,0 +1,7 @@
+[user]
+	name = Josu-A
+	email = aginagajosu@gmail.com
+[core]
+	autocrlf = input
+[init]
+	defaultBranch = main
