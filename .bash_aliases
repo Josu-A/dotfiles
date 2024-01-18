@@ -4,8 +4,6 @@
 
 alias op='xdg-open'
 
-#alias ls='ls --color=auto'
-
 # Make ls display output of lsd instead
 alias ls='lsd'
 
