@@ -38,8 +38,9 @@ o.tabstop = 4
 -- Keep minimal number of screen lines visible
 wo.scrolloff = 8
 
--- Faster update time
+-- Change update time
 go.updatetime = 350
+go.timeoutlen = 350
 
 -- Color soft width limit
 wo.colorcolumn = "80"
