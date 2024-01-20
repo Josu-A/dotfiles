@@ -14,6 +14,15 @@ utils.merge_tables = function(tbl1, tbl2)
     return tbl1
 end
 
+utils.get_key_from_value = function(table, value)
+    for k, v in pairs(table) do
+        if v == value then
+            return k
+        end
+    end
+    return nil
+end
+
 utils.map = function(mode, lhs, rhs, description, opts)
     local default_options = {
         silent = true,
