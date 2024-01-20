@@ -37,7 +37,18 @@ alias am='alsamixer --view=all'
 # SSH connection shortcuts
 alias ssh-aguijos='ssh -i ~/.ssh/azurekey.pem azureuser@aguijos.eus'
 
+# git shortcut to manage dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+
+# nvim
+alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
+
+# bash aliases
+alias b-aliases='nvim ~/.bash_aliases'
+alias b-rc='nvim ~/.bashrc'
+alias b-profile='nvim ~/.bash_profile'
 
 #
 # Bash functions
