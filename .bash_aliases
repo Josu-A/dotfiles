@@ -11,7 +11,8 @@ alias ls='lsd'
 alias l='clear;ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias lt='ls --tree'
+alias lt='clear;tree -aC'
+alias ltd='clear;tree -aCd'
 
 # Color the output of some commands as default
 alias ip='ip -color=auto'

@@ -9,7 +9,7 @@ o.clipboard = "unnamedplus"
 go.whichwrap = "<,>,[,]"
 
 -- Height of command bar
-o.cmdheight = 3
+o.cmdheight = 2
 
 -- Ignore case when searching
 o.ignorecase = true

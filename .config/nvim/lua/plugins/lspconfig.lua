@@ -26,7 +26,22 @@ return {
         require("mason-lspconfig").setup {
             -- Available servers can be found here: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
             ensure_installed = {
-                "lua_ls"
+                "als", -- Ada
+                "bashls", -- Bash
+                "clangd", -- C
+                "cssls", -- CSS
+                "html", -- HTML
+                "tsserver", -- JavaScript / TypeScript
+                "jdtls", -- Java
+                "jsonls", -- JSON
+                "ltex", -- Latex
+                "texlab",
+                "lua_ls", -- Lua
+                "marksman", -- Markdown
+                "pyright", -- Python
+                "sqls", -- SQL
+                "taplo", -- TOML
+                "lemminx" -- XML
             },
             handlers = {
                 -- default handler

@@ -10,7 +10,7 @@ return {
         -- load trouble
         require("trouble").setup {
             -- automatically open the list when you have diagnostics
-            auto_open = true,
+            auto_open = false,
             -- automatically close the list when you have no diagnostics
             auto_close = false
         }
