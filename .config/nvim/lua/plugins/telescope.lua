@@ -24,7 +24,7 @@ return {
 
         register({
             p = {
-                name = "Telescope"
+                name = "Project"
             }
         }, { prefix = "<Leader>" })
 

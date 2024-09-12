@@ -3,7 +3,8 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "hrsh7th/cmp-nvim-lsp"
+        "hrsh7th/cmp-nvim-lsp",
+        "folke/which-key.nvim"
     },
     config = function()
         local utils = require("utils")
@@ -82,19 +83,30 @@ return {
             -- Buffer local mappings
             local opts = { buffer = event.buf }
             local buf = vim.lsp.buf
-            map("n", "gD", buf.declaration, opts)
-            map("n", "gd", buf.definition, opts)
-            map("n", "K", buf.hover, opts)
-            map("n", "gi", buf.implementation, opts)
-            map("n", "gs", buf.signature_help, opts)
-            map("n", "<Space>wa", buf.add_workspace_folder, opts)
-            map("n", "<Space>wr", buf.remove_workspace_folder, opts)
-            map("n", "<Space>wl", function() print(vim.inspect(buf.list_workspace_folders())) end, opts)
-            map("n", "<Space>D", buf.type_definition, opts)
-            map("n", "<Space>rn", buf.rename, opts)
-            map({ "n", "v" }, "<Space>ca", buf.code_action, opts)
-            map("n", "gr", buf.references, opts)
-            map("n", "<Space>f", function() buf.format { async = true } end, opts)
+            local nMap = function (lhs, rhs, desc)
+                map("n", lhs, rhs, desc, opts)
+            end
+            local register = require("which-key").register
+
+            register({
+                W = {
+                    name = "Workspace"
+                }
+            }, { prefix = "<Leader>" })
+
+            nMap("gD", buf.declaration, "Jumps to the declaration of the symbol under the cursor")
+            nMap("gd", buf.definition, "Jumps to the definiton of the symbol under the cursor")
+            nMap("K", buf.hover, "Displays hover information about the symbol under te cursor")
+            nMap("gi", buf.implementation, "List all the implementations for the symbol under the cursor")
+            nMap("gs", buf.signature_help, "Displays signature information about the symbol under the cursor")
+            nMap("<Leader>Wa", buf.add_workspace_folder, "Add a folder to the workspace")
+            nMap("<Leader>Wr", buf.remove_workspace_folder, "Remove a folder from the workspace")
+            nMap("<Leader>Wl", function () print(vim.inspect(buf.list_workspace_folders())) end, "List workspace folders")
+            nMap("gtd", buf.type_definition, "Jumps to the definition of the type of the symbol under the cursor")
+            nMap("<Leader>r", buf.rename, "Renames all references to the symbol under the cursor")
+            nMap("gr", buf.references, "Lists all references to the symbol under the cursor")
+            nMap("<Leader>f", function () buf.format { async = true } end, "Format current buffer using the LS")
+            --map({ "n", "v" }, "<Space>ca", buf.code_action, opts)
         end)
 
         vim.diagnostic.config {

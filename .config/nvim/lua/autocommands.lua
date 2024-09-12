@@ -1,14 +1,12 @@
 local utils = require("utils")
-local map = utils.map
 local create_augroup = utils.create_augroup
 local create_autocmd = utils.create_autocmd
 local wo = vim.wo
 
 -- Highlight current line
 local bg_highlight = create_augroup("BgHighlight")
-local cursorline = wo.cursorline
-create_autocmd("WinEnter", bg_highlight, function() cursorline = true end)
-create_autocmd("WinLeave", bg_highlight, function() cursorline = false end)
+create_autocmd("WinEnter", bg_highlight, function() wo.cursorline = true end)
+create_autocmd("WinLeave", bg_highlight, function() wo.cursorline = false end)
 
 
 -- Check if directory is a git repository

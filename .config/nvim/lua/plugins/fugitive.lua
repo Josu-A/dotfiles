@@ -10,7 +10,7 @@ return {
 
         register({
             g = {
-                name = "Fugitive (git)"
+                name = "Git"
             }
         }, { prefix = "<Leader>" })
 

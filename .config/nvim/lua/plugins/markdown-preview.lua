@@ -19,13 +19,13 @@ return {
         local register = require("which-key").register
 
         register({
-            p = {
+            m = {
                 name = "Markdown Preview"
             }
         }, { prefix = "<Leader>" })
 
-        map("n", "<Leader>mpb", "<cmd>MarkdownPreview<cr>", "Markdown Preview Begin")
-        map("n", "<Leader>mps", "<cmd>MarkdownPreviewStop<cr>", "Markdown Preview Stop")
-        map("n", "<Leader>mpt", "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview Toggle")
+        map("n", "<Leader>mb", "<cmd>MarkdownPreview<cr>", "Markdown Preview Begin")
+        map("n", "<Leader>ms", "<cmd>MarkdownPreviewStop<cr>", "Markdown Preview Stop")
+        map("n", "<Leader>mt", "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview Toggle")
     end
 }
