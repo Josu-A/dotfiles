@@ -36,7 +36,7 @@ alias ehu-vpn-down='nmcli connection down f6c3cecc-7d0b-4706-b4b2-0bdc00d98e96'
 alias am='alsamixer --view=all'
 
 # SSH connection shortcuts
-alias ssh-aguijos='ssh -i ~/.ssh/azurekey.pem azureuser@aguijos.eus'
+alias ssh-aguijos='ssh -i ~/.ssh/azurekey.pem azureuser@sgssi.aguijos.eus'
 
 # git shortcut to manage dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
@@ -50,6 +50,19 @@ alias v='nvim'
 alias b-aliases='nvim ~/.bash_aliases'
 alias b-rc='nvim ~/.bashrc'
 alias b-profile='nvim ~/.bash_profile'
+
+
+# Ports in use
+ports() {
+    spro="TCP"
+
+    cmd="sudo lsof -nP -s${spro}:LISTEN -i${spro}"
+    if [[ -n $1 ]]; then
+        cmd="${cmd}:$1"
+    fi
+
+    eval "$cmd"
+}
 
 #
 # Bash functions
