@@ -1,13 +1,11 @@
 return {
     "folke/which-key.nvim",
-    config = function()
-        require("which-key").setup {
-            window = {
-                border = "shadow"
-            },
-            layout = {
-                align = "center"
-            }
+    opts = {
+        win = {
+            border = "shadow"
+        },
+        layout = {
+            align = "center"
         }
-    end
+    }
 }

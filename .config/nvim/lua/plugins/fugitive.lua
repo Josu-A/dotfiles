@@ -9,10 +9,8 @@ return {
         local register = require("which-key").register
 
         register({
-            g = {
-                name = "Git"
-            }
-        }, { prefix = "<Leader>" })
+            { "<Leader>g", group = "Git" },
+        })
 
         map("n", "<Leader>gs", "<cmd>Git<cr>", "Git status")
         map("n", "<Leader>gw", "<cmd>Gwrite<cr>", "Git add")

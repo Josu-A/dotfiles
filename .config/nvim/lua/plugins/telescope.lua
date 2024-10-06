@@ -23,10 +23,8 @@ return {
         local register = require("which-key").register
 
         register({
-            p = {
-                name = "Project"
-            }
-        }, { prefix = "<Leader>" })
+            { "<Leader>p", group = "Project" },
+        })
 
         -- mappings with <C-/> and ? in insert and normal mode respectively
         map("n", "<Leader>pf", builtin.find_files, "Find project files")

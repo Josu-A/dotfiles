@@ -89,10 +89,8 @@ return {
             local register = require("which-key").register
 
             register({
-                W = {
-                    name = "Workspace"
-                }
-            }, { prefix = "<Leader>" })
+                { "<Leader>W", group = "Workspace" },
+            })
 
             nMap("gD", buf.declaration, "Jumps to the declaration of the symbol under the cursor")
             nMap("gd", buf.definition, "Jumps to the definiton of the symbol under the cursor")

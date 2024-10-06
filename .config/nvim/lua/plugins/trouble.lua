@@ -22,10 +22,8 @@ return {
         local register = require("which-key").register
 
         register({
-            t = {
-                name = "Trouble"
-            }
-        }, { prefix = "<Leader>" })
+            { "<Leader>t", group = "Trouble" },
+        })
 
         map("n", "<Leader>tx", function() toggle() end, "Toggle trouble")
         map("n", "<Leader>tw", function() toggle("workspace_diagnostics") end, "Toggle workspace diagnostics")

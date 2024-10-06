@@ -33,7 +33,7 @@ return {
                 { name = "path" }
             }, {
                 { name = "buffer" }
-            })
+            }),
         }
     end
 }
