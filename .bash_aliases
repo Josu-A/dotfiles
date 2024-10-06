@@ -42,6 +42,8 @@ alias ssh-aguijos='ssh -i ~/.ssh/azurekey.pem azureuser@sgssi.aguijos.eus'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 alias dotfiless='dotfiles status'
 alias dotfilesa='dotfiles add -u'
+alias dotfilesc='dotfiles commit -m'
+alias dotfilesp='dotfiles push'
 
 # nvim
 alias vim='nvim'
