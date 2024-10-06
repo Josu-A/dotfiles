@@ -5,7 +5,9 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local awful = require("awful")
 local gears = require("gears")
+
 require("awful.autofocus")
+
 -- Notification library
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
