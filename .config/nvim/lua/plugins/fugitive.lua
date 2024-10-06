@@ -5,7 +5,7 @@ return {
         "folke/which-key.nvim"
     },
     config = function()
-        local map = require("utils").map
+        local map = require("config.utils").map
         local register = require("which-key").register
 
         register({

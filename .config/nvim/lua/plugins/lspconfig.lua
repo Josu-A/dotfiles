@@ -7,7 +7,7 @@ return {
         "folke/which-key.nvim"
     },
     config = function()
-        local utils = require("utils")
+        local utils = require("config.utils")
         local create_autocmd = utils.create_autocmd
         local create_augroup = utils.create_augroup
         local map = utils.map

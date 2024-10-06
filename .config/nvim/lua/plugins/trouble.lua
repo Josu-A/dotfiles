@@ -16,7 +16,7 @@ return {
         }
 
         -- set mappings for trouble
-        local map = require("utils").map
+        local map = require("config.utils").map
         local toggle = require("trouble").toggle
 
         local register = require("which-key").register

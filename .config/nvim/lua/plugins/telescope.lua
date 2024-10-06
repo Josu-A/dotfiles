@@ -19,7 +19,7 @@ return {
         require("telescope").load_extension("fzf")
 
         local builtin = require("telescope.builtin")
-        local map = require("utils").map
+        local map = require("config.utils").map
         local register = require("which-key").register
 
         register({

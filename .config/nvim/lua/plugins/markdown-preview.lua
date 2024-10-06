@@ -15,7 +15,7 @@ return {
         vim.fn["mkdp#util#install"]()
     end,
     config = function()
-        local map = require("utils").map
+        local map = require("config.utils").map
         local register = require("which-key").register
 
         register({
