@@ -53,6 +53,7 @@ awful.spawn.with_shell(
     -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
     'nm-applet;' ..
     'setxkbmap -layout "es";' ..
+    'numlockx;' ..
     'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"'
     )
 
