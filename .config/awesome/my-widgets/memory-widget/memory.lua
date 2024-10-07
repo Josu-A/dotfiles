@@ -24,7 +24,7 @@ local function worker(userArgs)
 
     memoryWidget = wibox.widget{
         wibox.container.margin(memWidget, nil, marginRight),
-        swapWidget,
+        --swapWidget,
         layout = wibox.layout.fixed.horizontal
     }
 
@@ -72,7 +72,7 @@ local function worker(userArgs)
             swapused = tonumber(formattedSwapused)
 
             memWidget.text = string.format("Mem %.2f", used)
-            swapWidget.text = string.format("Swap %.2f", swapused)
+            --swapWidget.text = string.format("Swap %.2f", swapused)
         end
     }
     return wibox.container.margin(memoryWidget, marginLeft, marginRight)
