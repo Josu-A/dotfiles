@@ -39,22 +39,19 @@ end
 
 --[[
 run_once({ -- comma-separated entries
-    "nm-applet", -- Network manager applet to systemtray
-    "setxkbmap -layout 'us,es'", -- Set keyboard layouts
-    "numlockx", -- Activate NumLock
     "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1;"  -- polkit agency to allow root passwordless printer configuration
 })
 --]]
 
 -- This function implements the XDG autostart specification
 awful.spawn.with_shell(
-    'if (xrdb -query | grep -q "^awesome\\.started:\\strue$"); then exit; fi;' ..
+    'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
     'xrdb -merge <<< "awesome.started:true";' ..
     -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
-    'nm-applet;' ..
-    'setxkbmap -layout "es";' ..
-    'numlockx;' ..
-    'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"'
-    )
+    'dex --environment Awesome --autostart --search-paths "${XDG_CONFIG_HOME:-$HOME/.config}/autostart:${XDG_CONFIG_DIRS:-/etc/xdg}/autostart";' ..
+    'nm-applet;' .. -- Network manager applet to systemtray
+    'setxkbmap -layout "es";' .. -- Set keyboard layouts
+    'numlockx on;' -- Activate NumLock
+)
 
 -- }}}
