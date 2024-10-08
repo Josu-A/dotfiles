@@ -51,7 +51,8 @@ awful.spawn.with_shell(
     'dex --environment Awesome --autostart --search-paths "${XDG_CONFIG_HOME:-$HOME/.config}/autostart:${XDG_CONFIG_DIRS:-/etc/xdg}/autostart";' ..
     'nm-applet;' .. -- Network manager applet to systemtray
     'setxkbmap -layout "es";' .. -- Set keyboard layouts
-    'numlockx on;' -- Activate NumLock
+    'numlockx on;' .. -- Activate NumLock
+    'picom -b;' -- Run compositor in background
 )
 
 -- }}}
