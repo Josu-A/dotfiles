@@ -4,7 +4,7 @@ decorations = "None"
 decorations_theme_variant = "None"
 dynamic_padding = false
 dynamic_title = true
-opacity = 1.0
+opacity = 1
 position = "None"
 resize_increments = false
 startup_mode = "Windowed"
@@ -33,19 +33,19 @@ builtin_box_drawing = true
 size = 9.0
 
 [font.normal]
-family = "monospace"
+family = "NotoSansM Nerd Font Mono"
 style = "Regular"
 
 [font.bold]
-family = "monospace"
+#family = "monospace"
 #style = "Bold"
 
 [font.italic]
-family = "monospace"
+#family = "monospace"
 #style = "Italic"
 
 [font.bold_italic]
-family = "monospace"
+#family = "monospace"
 #style = "Bold Italic"
 
 [font.offset]
@@ -150,8 +150,8 @@ unfocused_hollow = true
 thickness = 0.15
 
 [cursor.style]
-shape = "Block"
-blinking = "Off"
+shape = "Beam"
+blinking = "On"
 
 
 [terminal]
