@@ -1175,9 +1175,14 @@ Section "InputClass"
     Identifier "system-keyboard"
     MatchIsKeyboard "on"
     Option "XkbLayout" "es"
-    Option "XkbModel" "pc104"
     Option "XkbVariant" "qwerty"
 EndSection
+```
+
+Or, run the following command to create the file automatically:
+
+```console
+# localectl --no-convert set-x11-keymap es qwerty
 ```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
