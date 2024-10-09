@@ -119,6 +119,7 @@
                 <li><a href="#documents">Documents</a></li>
                 <li><a href="#virtualization">Virtualization</a></li>
                 <li><a href="#development">Development</a></li>
+                <li><a href="#file-management">File management</a></li>
                 <li><a href="#others">Others</a></li>
             </ol>
         </li>
@@ -1732,15 +1733,69 @@ $ paru -S --noconfirm --needed eclipse-java-bin visual-studio-code-bin
 
 <p align="right">(<a href="#top">go to top</a>)</p>
 
+### File management
+
+The following two file managers will be installed:
+
+- `nemo`: GTK based file manager.
+- `lf`: CLI based file manager, with previews.
+
+On top of that, `trash-cli` will be installed and can be used as a replacement to `rm` while implementing the FreeDesktop trash specification. Provides the following commands: `trash-put`, `trash-restore`, `trash-list`,`trash-empty` and `trash-rm`.
+
+```console
+# pacman -S --noconfirm --needed nemo lf trash-cli
+```
+
+Create a user unit that will be called by a user timer, which will delete trashed files older than specified.
+
+> `~/.config/systemd/user/trash-cleanup.service`
+```ini
+[Unit]
+Description=Clean trashed files older than 30 days
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/trash-empty 30
+```
+
+Then, create the timer.
+
+> `~/.config/systemd/user/trash-cleanup.timer`
+```ini
+[Unit]
+Description=Queue trash cleanup daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=1h
+
+[Install]
+WantedBy=timers.target
+```
+
+Finally, enable the timer.
+
+```console
+$ systemctl enable --user --now trash-cleanup.timer
+```
+
+To have user services run at boot instead of login, we can enable lingering for a particular user.
+
+```console
+# loginctl enable-linger ${USER}
+```
+
+<p align="right">(<a href="#top">go to top</a>)</p>
+
 ### Others
 
 ```console
 # pacman -S --noconfirm --needed \
 > units translate-shell lorem \
-> fastfetch hwinfo lm_sensors nemo lf \
+> fastfetch hwinfo lm_sensors \
 > xfce4-taskmanager systemd-ui qalculate-qt \
 > barrier \
-> keepassxc \
 > geogebra notepadqq qxmledit
 ```
 
