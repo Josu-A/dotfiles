@@ -1,0 +1,10 @@
+[Unit]
+Description=Queue trash cleanup daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=1h
+
+[Install]
+WantedBy=timers.target
