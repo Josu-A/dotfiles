@@ -21,6 +21,8 @@ After installing the dotfiles, you can start using them by opening a new termina
 $ source ~/.bashrc
 ```
 
+You can use the `dotfiles` alias to easily add, commit and push changes to the files.
+
 Check out my [Arch Linux install steps](Documents/ArchInstallGuide.md).
 
 ## Customization
