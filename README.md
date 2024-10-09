@@ -1724,10 +1724,13 @@ Install the following packages to develop software:
 - `go`: Go compiler.
 - `eclipse-java-bin`: IDE for java.
 - `visual-studio-code-bin`: general IDE.
+- `geogebra`: interactive geometry, algebra, statistics and calculus application.
+- `notepadqq`: Notepad++-like text editor with support for syntax highlighting.
+- `qxmledit`: simple Qt XML editor and XSD viewer.
 
 
 ```console
-# pacman -S --noconfirm --needed npm nodejs cmake
+# pacman -S --noconfirm --needed npm nodejs cmake geogebra notepadqq qxmledit
 $ paru -S --noconfirm --needed eclipse-java-bin visual-studio-code-bin
 ```
 
@@ -1795,8 +1798,7 @@ To have user services run at boot instead of login, we can enable lingering for 
 > units translate-shell lorem \
 > fastfetch hwinfo lm_sensors \
 > xfce4-taskmanager systemd-ui qalculate-qt \
-> barrier \
-> geogebra notepadqq qxmledit
+> barrier
 ```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
