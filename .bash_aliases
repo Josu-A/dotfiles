@@ -39,7 +39,7 @@ alias am='alsamixer --view=all'
 alias ssh-aguijos='ssh -i ~/.ssh/azurekey.pem azureuser@sgssi.aguijos.eus'
 
 # git shortcut to manage dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias dotfiless='dotfiles status'
 alias dotfilesa='dotfiles add -u'
 alias dotfilesc='dotfiles commit -m'
