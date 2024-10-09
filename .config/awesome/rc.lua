@@ -49,7 +49,7 @@ awful.spawn.with_shell(
     'xrdb -merge <<< "awesome.started:true";' ..
     -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
     'dex --environment Awesome --autostart --search-paths "${XDG_CONFIG_HOME:-$HOME/.config}/autostart:${XDG_CONFIG_DIRS:-/etc/xdg}/autostart";' ..
-    'nm-applet;' .. -- Network manager applet to systemtray
+    'nm-applet --indicator;' .. -- Network manager applet to systemtray
     'setxkbmap -layout "es";' .. -- Set keyboard layouts
     'numlockx on;' .. -- Activate NumLock
     'picom -b;' -- Run compositor in background
