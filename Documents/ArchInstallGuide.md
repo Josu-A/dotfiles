@@ -51,6 +51,7 @@
                 <li><a href="#core-utils">Core utils</a></li>
                 <li><a href="#post-installation">Post installation</a></li>
                 <li><a href="#network">Network</a></li>
+                <li><a href="#secret-service">Secret service</a></li>
                 <li><a href="#pacman-cache">Pacman cache</a></li>
                 <li><a href="#pacman-mirrors---reflector">Pacman mirrors - Reflector</a></li>
                 <li><a href="#numlock-on-boot">Numlock on boot</a></li>
@@ -755,7 +756,11 @@ An applet will be used to make connecting to networks easier, `network-manager-a
 # pacman -S --noconfirm --needed network-manager-applet
 ```
 
-To store connecton secrets KeePassXC can be used, which implements the Secret Service D-Bus API.
+<p align="right">(<a href="#top">go to top</a>)</p>
+
+### Secret service
+
+To store connection and other secrets KeePassXC can be used, which implements the Secret Service D-Bus API.
 
 ```console
 # pacman -S keepassxc
@@ -771,6 +776,10 @@ To make applications autostart keepassxc when needed, create the following file.
 Name=org.freedesktop.secrets
 Exec=/usr/bin/keepassxc
 ```
+
+Create a local database and enable `KeepassXC Freedesktop.org Secret Service integration` in *Tools > Settings*. Then, create a group within it to be shared with the secret service.
+
+Once the group is created go to settings and set this group to be available via secret service.
 
 <p align="right">(<a href="#top">go to top</a>)</p>
 
