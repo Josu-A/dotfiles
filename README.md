@@ -6,11 +6,12 @@ This repository contains my personal configuration files for various tools and a
 
 To install these dotfiles, you can clone the repository and create a bare repository with it if you want to keep track of your changes:
 
-```sh
-cd $HOME
-git clone https://github.com/Josu-A/dotfiles.git .
-git --git-dir=$HOME/.dotfiles/ config --local status.showUntrackedFiles no
-git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout -f
+```console
+$ cd $HOME
+$ git clone https://github.com/Josu-A/dotfiles.git .
+$ git init --bare .dotfiles
+$ git --git-dir=$HOME/.dotfiles/ config --local status.showUntrackedFiles no
+$ git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout -f
 ```
 
 ## Usage
