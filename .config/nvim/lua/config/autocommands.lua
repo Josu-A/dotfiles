@@ -17,3 +17,12 @@ create_autocmd({ "VimEnter", "DirChanged" }, git_repo_check, function()
         vim.api.nvim_exec_autocmds("User", { pattern = "InGitRepo" })
     end
 end)
+
+
+-- Automatically update lazy.nvim plugins
+local lazynvim_autoupdate = create_augroup("lazynvim_autoupdate")
+create_autocmd("VimEnter", lazynvim_autoupdate, function()
+    if require("lazy.status").has_updates then
+        require("lazy").update({ show = false, })
+    end
+end)
