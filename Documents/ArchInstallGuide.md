@@ -1564,13 +1564,13 @@ Install the `qt5ct` and `qt6ct` QT configuration tools to modify the themes.
 Set the following environment variable so that QT applications use the `qt5ct`/`qt6ct` configurations.
 
 ```console
-# echo 'QT_QPA_PLATFORMTHEME=qt5ct:qt6ct' >> /etc/environment
+# echo 'QT_QPA_PLATFORMTHEME=qt5ct' >> /etc/environment
 ```
 
 The `breeze` theme will be installed for QT based applications to use.
 
 ```console
-# pacman -S --noconfirm --needed breeze
+# pacman -S --noconfirm --needed breeze breeze5
 ```
 
 To make apps using qt5.6 and later respect the default dpi, set the following environment variables.
