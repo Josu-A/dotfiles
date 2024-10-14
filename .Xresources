@@ -7,7 +7,7 @@
 !
 ! -----------------------------------
 
-Xcursor.size: 16
+Xcursor.size: 32
 Xcursor.theme: Bibata-Modern-Ice
 Xft.antialias: true
 Xft.autohint: false
