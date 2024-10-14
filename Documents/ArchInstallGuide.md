@@ -1538,10 +1538,12 @@ and by running the following command in `gtk4`:
 To make the themeing for all users, make symbolic links with the GTK theme configuration files.
 
 ```console
-# ln -s ~/.gtkrc-2.0 /etc/gtk-2.0/gtkrc
+# ln -s ~/.config/gtk-2.0/settings.ini /etc/gtk-2.0/settings.ini
 # ln -s ~/.config/gtk-3.0/settings.ini /etc/gtk-3.0/settings.ini
 # ln -s ~/.config/gtk-4.0/settings.ini /etc/gtk-4.0/settings.ini
 ```
+
+Additional configuration files can be found in different files on the corresponding gtk version's folders.
 
 <p align="right">(<a href="#top">go to top</a>)</p>
 
