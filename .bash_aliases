@@ -45,6 +45,13 @@ alias dotfilesa='dotfiles add -u'
 alias dotfilesc='dotfiles commit -m'
 alias dotfilesp='dotfiles push'
 
+# git shortcuts to manage etcfiles
+alias etcfiles='/usr/bin/git --git-dir=$HOME/.etcfiles --work-tree=/etc'
+alias etcfiless='etcfiles status'
+alias etcfilesa='etcfiles add -u'
+alias etcfilesc='etcfiles commit -m'
+alias etcfilesp='etcfiles push'
+
 # nvim
 alias vim='nvim'
 alias vi='nvim'
