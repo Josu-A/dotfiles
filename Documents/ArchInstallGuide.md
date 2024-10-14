@@ -130,6 +130,7 @@
                 <li><a href="#backlight">Backlight</a></li>
                 <li><a href="#color-temperature">Color temperature</a></li>
                 <li><a href="#battery-state">Battery state</a></li>
+                <li><a href="#touchpad">Touchpad</a></li>
             </ol>
         </li>
     </ol>
@@ -1916,5 +1917,45 @@ Install the `acpi` package, which can be used to obtain information about ACPI d
 ```
 
 Our window manager will use this to display battery levels.
+
+<p align="right">(<a href="#top">go to top</a>)</p>
+
+
+### Touchpad
+
+An xorg configuration entry can be made to modify touchpad behaviour.
+
+> `/etc/X11/xorg.conf.d/50-synaptics-clickpad.conf
+```xorg
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "synaptics"
+    MatchIsTouchpad "on"
+    # Enables Palm Detection to prevent bad clicks
+    # This seems to work on PS/2, but not on i2c
+    Option "PalmDetect" "1"
+    Option "PalmMinWidth" "8"
+    Option "PalmMinZ" "100"
+    # Enable clickpad support
+    Option "ClickPad" "true"
+    # Sets up soft buttons at the bottom
+    # First 40% - Left Button
+    # Middle 20% - Middle Button
+    # Right 40% - Right Button
+    Option "SoftButtonAreas" "60% 0 82% 0 40% 59% 82% 0"
+    # Disables Tap to click
+    Option "MaxTapTime" "0"
+    # Enable two finger scrolling
+    Option "VertTwoFingerScroll" "on"
+    Option "HorizTwoFingerScroll" "on"
+    # Reverse scroll
+    Option "VertScrollDelta" "-31"
+    Option "HorizScrollDelta" "-31"
+    # Two finger right click
+    Option "TapButton1" "1"
+    Option "TapButton2" "2"
+    Option "TapButton3" "3"
+EndSection
+```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
