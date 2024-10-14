@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 # Source aliases
-if [ -f ~/.bash_aliases ]; then 
+if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
@@ -28,9 +28,7 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 
 # Java
-##export JDK_JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
-##export JAVA_TOOL_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 
 
 # PROMPT CUSTOMIZATION
