@@ -9,6 +9,7 @@ return {
             "c",
             "css",
             "csv",
+            "dockerfile",
             "gitignore",
             "html",
             "java",
