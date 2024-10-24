@@ -62,6 +62,9 @@ alias b-aliases='nvim ~/.bash_aliases'
 alias b-rc='nvim ~/.bashrc'
 alias b-profile='nvim ~/.bash_profile'
 
+#
+# Bash functions
+#
 
 # Show ports in use
 ports() {
@@ -100,10 +103,13 @@ extract() {
     fi
 }
 
-#
-# Bash functions
-#
-
+# List files after changing directory
 cd() {
     builtin cd "$@" && l;
 }
+
+# Change directory to the directory lf was at before exiting
+lfcd() {
+    cd "$(command lf -print-last-dir "$@")"
+}
+
