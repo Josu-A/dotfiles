@@ -1925,7 +1925,7 @@ Our window manager will use this to display battery levels.
 
 An xorg configuration entry can be made to modify touchpad behaviour.
 
-> `/etc/X11/xorg.conf.d/40-libinput-clickpad.conf
+> `/etc/X11/xorg.conf.d/30-libinput-clickpad.conf
 ```xorg
 Section "InputClass"
     Identifier "touchpad"
