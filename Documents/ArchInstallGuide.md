@@ -1931,30 +1931,29 @@ Section "InputClass"
     Identifier "touchpad"
     Driver "libinput"
     MatchIsTouchpad "on"
-    # Enables Palm Detection to prevent bad clicks
-    # This seems to work on PS/2, but not on i2c
-    Option "PalmDetect" "1"
-    Option "PalmMinWidth" "8"
-    Option "PalmMinZ" "100"
-    # Enable clickpad support
-    Option "ClickPad" "true"
-    # Sets up soft buttons at the bottom
-    # First 40% - Left Button
-    # Middle 20% - Middle Button
-    # Right 40% - Right Button
-    Option "SoftButtonAreas" "60% 0 82% 0 40% 59% 82% 0"
-    # Disables Tap to click
-    Option "MaxTapTime" "0"
-    # Enable two finger scrolling
-    Option "VertTwoFingerScroll" "on"
-    Option "HorizTwoFingerScroll" "on"
-    # Reverse scroll
-    Option "VertScrollDelta" "-31"
-    Option "HorizScrollDelta" "-31"
-    # Two finger right click
-    Option "TapButton1" "1"
-    Option "TapButton2" "2"
-    Option "TapButton3" "3"
+    # Disable movement acceleration
+    Option "AccelProfile" "flat"
+    Option "AccelSpeed" "0"
+    # Set the clicking method to buttons
+    Option "ClickMethod" "buttonareas"
+    # Disable touchpad while typing
+    Option "DisableWhileTyping" "true"
+    # Enable horizontal scrolling
+    Option "HorizontalScrolling" "true"
+    # Pressing left and right buttons will instead press the middle button
+    Option "MiddleEmulation" "true"
+    # Enable natural scrolling
+    Option "NaturalScrolling" "true"
+    # Set the scrolling method using two finger gesturing
+    Option "ScrollMethod" "twofinger"
+    # Set the distance to gesture per scroll tick
+    Option "ScrollPixelDistance" "20"
+    # Enable tap to click
+    Option "Tapping" "true"
+    # Set tap mapping to 1-left, 2-right, 3-middle
+    Option "TappingButtonMap" "lrm"
+    # Enable dragging after tapping
+    Option "TappingDrag" "true"
 EndSection
 ```
 
