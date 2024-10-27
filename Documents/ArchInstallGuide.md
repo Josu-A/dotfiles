@@ -1925,11 +1925,11 @@ Our window manager will use this to display battery levels.
 
 An xorg configuration entry can be made to modify touchpad behaviour.
 
-> `/etc/X11/xorg.conf.d/50-synaptics-clickpad.conf
+> `/etc/X11/xorg.conf.d/40-libinput-clickpad.conf
 ```xorg
 Section "InputClass"
     Identifier "touchpad"
-    Driver "synaptics"
+    Driver "libinput"
     MatchIsTouchpad "on"
     # Enables Palm Detection to prevent bad clicks
     # This seems to work on PS/2, but not on i2c
