@@ -1713,6 +1713,14 @@ Install the following applications to virtualize applications:
 # pacman -S --noconfirm --needed virtualbox virtualbox-host-modules-arch virtualbox-guest-iso
 ```
 
+To install docker and utilities, execute the following commands.
+
+```console
+# pacman -S docker docker-compose
+# systemctl enable --now docker.socket
+$ sudo usermod -aG docker $USER
+```
+
 <p align="right">(<a href="#top">go to top</a>)</p>
 
 ### Development
