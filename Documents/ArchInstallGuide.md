@@ -1933,7 +1933,7 @@ Section "InputClass"
     MatchIsTouchpad "on"
     # Disable movement acceleration
     Option "AccelProfile" "flat"
-    Option "AccelSpeed" "0"
+    Option "AccelSpeed" "0.33"
     # Set the clicking method to buttons
     Option "ClickMethod" "buttonareas"
     # Disable touchpad while typing
@@ -1947,7 +1947,7 @@ Section "InputClass"
     # Set the scrolling method using two finger gesturing
     Option "ScrollMethod" "twofinger"
     # Set the distance to gesture per scroll tick
-    Option "ScrollPixelDistance" "20"
+    Option "ScrollPixelDistance" "15"
     # Enable tap to click
     Option "Tapping" "true"
     # Set tap mapping to 1-left, 2-right, 3-middle
