@@ -19,6 +19,9 @@ alias ip='ip -color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 
+# Alias rm to suggest using trash instead
+alias rm='echo "You might be looking for: trash-put "'
+
 # Default style for xterm terminal
 alias xterm='xterm -bg black -fg white -fa "Droid Sans Mono" -fs 12'
 
