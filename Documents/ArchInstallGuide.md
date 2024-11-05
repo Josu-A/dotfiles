@@ -111,6 +111,7 @@
         <li><a href="#software">Software</a>
             <hr/>
             <ol>
+                <li><a href="#default-apps">Default apps</a></li>
                 <li><a href="#compression-tools">Compression tools</a></li>
                 <li><a href="#browsers">Browsers</a></li>
                 <li><a href="#communication">Communication</a></li>
@@ -1615,6 +1616,20 @@ Install `grub-customizer`.
 
 ## Software
 
+### Default apps
+
+The `/etc/xdg/mimeapps.list` file for system wide or the `~/.config/mimeapps.list` file for user specific configuration can be altered to specify the apps used for each file type.
+
+> `~/.config/mimeapps.list`
+```mime
+[Added Associations]
+[Removed Associations]
+[Default Applications]
+inode/x-empty=nvim.desktop
+```
+
+<p align="right">(<a href="#top">go to top</a>)</p>
+
 ### Compression tools
 
 The following packages can be installed to work with different archives.
@@ -1641,6 +1656,12 @@ Install web browsers with:
 
 ```console
 # pacman -S --noconfirm --needed firefox
+```
+
+Set the `BROWSER` environment variable to the firefox's executable.
+
+```console
+# echo "BROWSER=/usr/bin/firefox" >> /etc/environment
 ```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
@@ -1813,6 +1834,23 @@ To have user services run at boot instead of login, we can enable lingering for 
 > fastfetch hwinfo lm_sensors \
 > xfce4-taskmanager systemd-ui \
 > barrier
+```
+
+#### Wireshark
+
+Install the `wireshark-qt` package and add the user to the `wireshark` group to avoid having to use `sudo` to launch it.
+
+```console
+# pacman -S wireshark-qt
+$ usermod -aG wireshark $USER
+```
+
+#### Nmap
+
+Install the `nmap` package.
+
+```console
+# pacman -S nmap
 ```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
