@@ -51,6 +51,7 @@
                 <li><a href="#core-utils">Core utils</a></li>
                 <li><a href="#post-installation">Post installation</a></li>
                 <li><a href="#network">Network</a></li>
+                <li><a href="#dnr">DNR</a></li>
                 <li><a href="#secret-service">Secret service</a></li>
                 <li><a href="#pacman-cache">Pacman cache</a></li>
                 <li><a href="#pacman-mirrors---reflector">Pacman mirrors - Reflector</a></li>
@@ -727,7 +728,7 @@ Reboot to the new system.
 Install the following core utilities:
 
 ```console
-# pacman -S --noconfirm --needed bash-completion bat lsd duf dust htop tree xterm xdg-utils wget usbutils
+# pacman -S --noconfirm --needed bash-completion bat lsd duf dust htop tree xterm xdg-utils wget usbutils xclip
 ```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
@@ -756,6 +757,36 @@ An applet will be used to make connecting to networks easier, `network-manager-a
 
 ```console
 # pacman -S --noconfirm --needed network-manager-applet
+```
+
+<p align="right">(<a href="#top">go to top</a>)</p>
+
+### DNR
+
+One must configure multiple applications to provide proper domain name resolution, via a D-Bus interface, via NSS, and via stub resolvers. An alternative to these is to use `systemd-resolved`, which is a systemd service that handles all of them.
+
+Create the configuration file in `/etc/systemd/resolved.conf.d/dns.conf` and enable DNS Security Extensions, DNS over TLS and cacheing.
+
+> `/etc/systemd/resolved.conf.d/dns.conf`
+```ini
+[Resolve]
+DNSSEC=allow-downgrade
+DNSOverTLS=opportunistic
+Cache=yes
+```
+
+Enable the `systemd-resolved` service.
+
+```console
+# systemctl enable --now systemd-resolved.service
+```
+
+Modify the NetworkManager configuration file to tell it to use systemd-resolved.
+
+> `/etc/NetworkManager/NetworkManager.conf`
+```ini
+[main]
+dns=systemd-resolved
 ```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
