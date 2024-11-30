@@ -4,11 +4,10 @@ return {
     dependencies = {
         "folke/which-key.nvim"
     },
+    opts = {},
     config = function()
         local map = require("config.utils").map
-        local register = require("which-key").register
-
-        register({
+        require("which-key").add({
             { "<Leader>g", group = "Git" },
         })
 

@@ -86,9 +86,7 @@ return {
             local nMap = function (lhs, rhs, desc)
                 map("n", lhs, rhs, desc, opts)
             end
-            local register = require("which-key").register
-
-            register({
+            require("which-key").add({
                 { "<Leader>W", group = "Workspace" },
             })
 
@@ -113,7 +111,7 @@ return {
                 focusable = false,
                 style = "minimal",
                 border = "rounded",
-                source = "always",
+                source = true,
                 header = "",
                 prefix = ""
             }

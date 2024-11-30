@@ -6,24 +6,22 @@ return {
     cmd = {
         "MarkdownPreviewToggle",
         "MarkdownPreview",
-        "MarkdownPreviewStop"
+        "MarkdownPreviewStop",
     },
     ft = {
-        "markdown"
+        "markdown",
     },
     build = function()
         vim.fn["mkdp#util#install"]()
     end,
+    opts = {},
     config = function()
-        local map = require("config.utils").map
-        local register = require("which-key").register
-
-        register({
+        require("which-key").add({
             { "<Leader>m", group = "Markdown Preview" },
         })
-
+        local map = require("config.utils").map
         map("n", "<Leader>mb", "<cmd>MarkdownPreview<cr>", "Markdown Preview Begin")
         map("n", "<Leader>ms", "<cmd>MarkdownPreviewStop<cr>", "Markdown Preview Stop")
         map("n", "<Leader>mt", "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview Toggle")
-    end
+    end,
 }
