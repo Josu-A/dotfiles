@@ -728,7 +728,7 @@ Reboot to the new system.
 Install the following core utilities:
 
 ```console
-# pacman -S --noconfirm --needed bash-completion bat lsd duf dust htop tree xterm xdg-utils wget usbutils xclip
+# pacman -S --noconfirm --needed bash-completion bat lsd duf dust htop tree xterm xdg-utils wget usbutils xclip ripgrep
 ```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
