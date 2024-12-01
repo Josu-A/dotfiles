@@ -32,7 +32,7 @@ return {
                 "clangd", -- C
                 "cssls", -- CSS
                 "html", -- HTML
-                "tsserver", -- JavaScript / TypeScript
+                "ts_ls", -- JavaScript / TypeScript
                 "jdtls", -- Java
                 "jsonls", -- JSON
                 "ltex", -- Latex
