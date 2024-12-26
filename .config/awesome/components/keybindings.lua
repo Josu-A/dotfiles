@@ -171,7 +171,7 @@ local keybindings = gears.table.join(
     -- Trackpad control
     awful.key({ config.modkey, "Control" }, "t",
               function ()
-                  local touchpadDeviceName = "HTIX5288:00 0911:5288 Touchpad"
+                  local touchpadDeviceName = "ELAN0524:00 04F3:3215 Touchpad"
                   awful.spawn.easy_async_with_shell(string.format("xinput list-props '%s' | grep 'Device Enabled' | awk '{ print $NF }'", touchpadDeviceName), function(stdout)
                       local result = tonumber(stdout)
                       if result == 1 then
