@@ -119,19 +119,19 @@ local keybindings = gears.table.join(
     -- Media volume control
     awful.key({ }, "XF86AudioMute",
               function ()
-                  awful.spawn("amixer -q -D pipewire sset Master 1+ toggle", false)
+                  --awful.spawn("amixer -q -D pipewire sset Master 1+ toggle", false)
                   wibar.volumeWidget:toggle()
               end,
               {description = "toggle audio mute", group = "custom"}),
     awful.key({ }, "XF86AudioLowerVolume",
               function ()
-                  awful.spawn("amixer -q -D pipewire sset Master 2%-", false)
-                  wibar.volumeWidget:dec(5)
+                  --awful.spawn("amixer -q -D pipewire sset Master 2%-", false)
+                  wibar.volumeWidget:dec(2)
               end,
               {description = "lower audio volume", group = "custom"}),
     awful.key({ }, "XF86AudioRaiseVolume",
               function ()
-                  awful.spawn("amixer -q -D pipewire sset Master 2%+", false)
+                  --awful.spawn("amixer -q -D pipewire sset Master 2%+", false)
                   wibar.volumeWidget:inc(2)
               end,
               {description = "raise audio volume", group = "custom"}),
