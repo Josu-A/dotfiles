@@ -27,7 +27,7 @@ return {
         require("mason-lspconfig").setup {
             -- Available servers can be found here: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
             ensure_installed = {
-                "als", -- Ada
+                --"als", -- Ada
                 "bashls", -- Bash
                 "clangd", -- C
                 "cssls", -- CSS
