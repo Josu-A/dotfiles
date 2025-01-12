@@ -1667,14 +1667,14 @@ The following packages can be installed to work with different archives.
 
 - `tar`: archives files into a single `.tar` file.
 - `gzip`: compresses a file into a `.gz` file.
-- `p7zip`: works with the `.7z` files.
+- `7zip`: works with the `.7z` files.
 - `unrar`: uncompresses `.rar` files.
 - `zip`: compresses files into a single `.zip` file.
 - `unzip`: uncompresses files from a `.zip` file.
 - `innoextract`: extracts installers from a `.exe` file.
 
 ```console
-# pacman -S --noconfirm --needed tar gzip p7zip unrar zip unzip innoextract
+# pacman -S --noconfirm --needed tar gzip 7zip unrar zip unzip innoextract
 ```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
