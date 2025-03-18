@@ -21,6 +21,9 @@ awful.rules.rules = {
     -- Floating clients
     {
         rule_any = {
+            type = {
+                "dialog"
+            },
             instance = {
                 "DTA", -- Firefox addon DownThemAll
                 "copyq", -- Includes session name in class
