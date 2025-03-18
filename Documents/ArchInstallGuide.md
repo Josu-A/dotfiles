@@ -1568,7 +1568,7 @@ and by running the following command in `gtk4`:
 # gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 ```
 
-To make the themeing for all users, make symbolic links with the GTK theme configuration files.
+To make the theme available for all users, make symbolic links with the GTK theme configuration files.
 
 ```console
 # ln -s ~/.config/gtk-2.0/settings.ini /etc/gtk-2.0/settings.ini
@@ -1576,7 +1576,13 @@ To make the themeing for all users, make symbolic links with the GTK theme confi
 # ln -s ~/.config/gtk-4.0/settings.ini /etc/gtk-4.0/settings.ini
 ```
 
-Additional configuration files can be found in different files on the corresponding gtk version's folders.
+Additional configuration files can be found in different files on the corresponding GTK version's folders.
+
+Finally, to fix broken libadwaita applications, add the following environment variable:
+
+```console
+# echo "ADW_DISABLE_PORTAL=1" | sudo tee -a /etc/environment
+```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
 
