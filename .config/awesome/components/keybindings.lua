@@ -189,7 +189,7 @@ local keybindings = gears.table.join(
     -- Turn off screen light
     awful.key({ config.modkey, "Control" }, "b",
               function ()
-                  awful.spawn.easy_async_with_shell("sleep .5; xset dpms force off")
+                  awful.spawn.easy_async_with_shell("sleep .5; xset dpms force off", function() end)
               end,
               {description = "Turn off screen", group = "custom"})
 )
