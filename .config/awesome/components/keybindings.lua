@@ -185,7 +185,13 @@ local keybindings = gears.table.join(
                       end
                   end)
               end,
-              {description = "Toggle On/Off touchpad", group = "custom"})
+              {description = "Toggle On/Off touchpad", group = "custom"}),
+    -- Turn off screen light
+    awful.key({ config.modkey, "Control" }, "b",
+              function ()
+                  awful.spawn.easy_async_with_shell("sleep .5; xset dpms force off")
+              end,
+              {description = "Turn off screen", group = "custom"})
 )
 
 return keybindings
