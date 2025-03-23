@@ -1861,6 +1861,33 @@ To have user services run at boot instead of login, we can enable lingering for 
 # loginctl enable-linger ${USER}
 ```
 
+Install `udiskie` which is a removable disk automounter which uses udisks2.
+
+```console
+# pacman -S udiskie udisks2 --noconfirm --needed
+```
+
+Configure this by:
+
+> `/etc/udev/rules.d/99-udisks2.rules`
+```conf
+# UDISKS_FILESYSTEM_SHARED
+# ==1: mount filesystem to a shared directory (/media/VolumeName)
+# ==0: mount filesystem to a private directory (/run/media/$USER/VolumeName)
+# See udisks(8)
+ENV{ID_FS_USAGE}=="filesystem|other|crypto", ENV{UDISKS_FILESYSTEM_SHARED}="1"
+```
+
+Create an empty file in `/etc/tmpfiles.d` and set the permissions to 755 to clear the media folder after each reboot.
+
+```console
+# cd /etc/tmpfiles.d
+# touch media.conf
+# chmod 755 media.conf
+```
+
+Finally, add udiskie to awesome's autorun.
+
 <p align="right">(<a href="#top">go to top</a>)</p>
 
 ### Others

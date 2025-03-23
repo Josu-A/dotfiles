@@ -42,7 +42,8 @@ awful.rules.rules = {
                 "xtightvncviewer"
             },
             name = {
-                "Event Tester" -- xev
+                "Event Tester", -- xev
+                "Compress" -- File Roller nemo compress interagration
             },
             role = {
                 "AlarmWindow", -- Thunderbird's calendar

@@ -52,7 +52,8 @@ awful.spawn.with_shell(
     'nm-applet --indicator;' .. -- Network manager applet to systemtray
     'setxkbmap -layout "es";' .. -- Set keyboard layouts
     'numlockx on;' .. -- Activate NumLock
-    'picom -b;' -- Run compositor in background
+    'picom -b;' .. -- Run compositor in background
+    'udiskie -s' -- Run USB automounter and icon
 )
 
 -- }}}
