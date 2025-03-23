@@ -53,7 +53,7 @@ awful.spawn.with_shell(
     'setxkbmap -layout "es";' .. -- Set keyboard layouts
     'numlockx on;' .. -- Activate NumLock
     'picom -b;' .. -- Run compositor in background
-    'udiskie -s' -- Run USB automounter and icon
+    'udiskie -t;' -- Run USB automounter and icon
 )
 
 -- }}}
