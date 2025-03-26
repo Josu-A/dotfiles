@@ -3,12 +3,21 @@ local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local menubar = require("menubar")
 local naughty = require("naughty")
+
 local config = require("components.config")
 local mainmenu = require("components.mainmenu")
 local wibar = require("components.wibar")
 
 local runShell = require("awesome-wm-widgets.run-shell-3.run-shell")
 
+-- Menubar configuration
+-------------------------------------------------------------------------------
+menubar.show_categories = true
+menubar.cache_entries = true
+
+
+-- Keybinding Configuration
+-------------------------------------------------------------------------------
 local keybindings = gears.table.join(
     awful.key({ config.modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -113,6 +122,8 @@ local keybindings = gears.table.join(
     -- Menubar
     awful.key({ config.modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
+    awful.key({ config.modkey }, "u", function() menubar.refresh() end,
+              {description = "refresh the menubar", group = "launcher"}),
     -- Keyboard layout switch
     awful.key({ "Shift" }, "Alt_L", function () wibar.keyboardLayout.next_layout(); end,
               {description = "swap keyboard layout", group = "custom"}),
