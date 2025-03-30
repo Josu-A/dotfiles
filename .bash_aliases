@@ -66,6 +66,7 @@ alias b-aliases='nvim ~/.bash_aliases'
 alias b-rc='nvim ~/.bashrc'
 alias b-profile='nvim ~/.bash_profile'
 
+
 #
 # Bash functions
 #
@@ -117,3 +118,39 @@ lfcd() {
     cd "$(command lf -print-last-dir "$@")"
 }
 
+
+# find helpers
+find-files() {
+    if [[ "$1" == "-h" ]]; then
+        echo "Usage: find-files <directory> <search_term>"
+        echo "Finds files inside <directory> that contain <search_term> (case-insensitive)."
+        echo
+        echo "Example: find-files /home/user txt"
+        echo "→ Finds files in /home/user with 'txt' in their name."
+        return
+    fi
+
+    if [[ -z "$1" || -z "$2" ]]; then
+        echo "Error: Missing arguments. Use -h for help."
+        return 1
+    fi
+
+    find "$1" -type f -iname "*$2*" -print0 2>/dev/null | sort -z | xargs -0 lsd -l
+}
+find-folders() {
+    if [[ "$1" == "-h" ]]; then
+        echo "Usage: find-folders <directory> <search_term>"
+        echo "Finds directories inside <directory> that contain <search_term> (case-insensitive)."
+        echo
+        echo "Example: find-folders /home user"
+        echo "→ Finds directories in /home with 'user' in their name."
+        return
+    fi
+
+    if [[ -z "$1" || -z "$2" ]]; then
+        echo "Error: Missing arguments. Use -h for help."
+        return 1
+    fi
+
+    find "$1" -type d -iname "*$2*" -print0 2>/dev/null | sort -z | xargs -0 lsd -dl
+}
