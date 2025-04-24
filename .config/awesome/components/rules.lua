@@ -68,7 +68,7 @@ awful.rules.rules = {
             titlebars_enabled = false
         }
     },
-    -- Set browsers to always map on the corresponding tag
+    -- Set *BROWSERS* to always map on the corresponding tag
     {
         rule = {
             role = "browser"
@@ -78,7 +78,7 @@ awful.rules.rules = {
             tag = config.tag_names_dict["nav"]
         }
     },
-    -- Set development applications to always map on the corresponding tag
+    -- Set *DEVELOPMENT* applications to always map on the corresponding tag
     {
         rule_any = {
             class = {
@@ -86,11 +86,14 @@ awful.rules.rules = {
                 "Code",
                 "RStudio",
                 "Texmaker",
-                "oracle-ide-osgi-boot-OracleIdeLauncher" -- Oracle SQL Developer
+                "oracle-ide-osgi-boot-OracleIdeLauncher", -- Oracle SQL Developer
+                "QXmlEdit",
+                "Qalculate-gtk",
             },
             name = {
                 "Eclipse",
-                "Oracle SQL Developer"
+                "Oracle SQL Developer",
+                "LTS Analyser",
             }
         },
         properties = {
@@ -98,22 +101,26 @@ awful.rules.rules = {
             tag = config.tag_names_dict["dev"]
         }
     },
-    -- Set file managers to always map on the corresponding tag
+    -- Set *FILE MANAGERS* to always map on the corresponding tag
     {
-        rule = {
-            class = "Nemo"
+        rule_any = {
+            class = {
+                "Nemo",
+                "org.gnome.FileRoller",
+            },
         },
         properties = {
             screen = 1,
             tag = config.tag_names_dict["files"]
         }
     },
-    -- Set documents to always map on the corresponding tag
+    -- Set *DOCUMENTS* to always map on the corresponding tag
     {
         rule_any = {
             class = {
                 "qpdfview",
-                "StarUML"
+                "StarUML",
+                "xreader", "Xreader",
             },
             name = {
                 "LibreOffice"
@@ -124,12 +131,14 @@ awful.rules.rules = {
             tag = config.tag_names_dict["docs"]
         }
     },
-    -- Set media applications to always map on the corresponding tag
+    -- Set *MEDIA* applications to always map on the corresponding tag
     {
         rule_any = {
             class = {
                 "Audacity",
+                "battle.net.exe",
                 "Ghb",
+                "Lutris",
                 "mpv",
                 "obs",
                 "steam",
@@ -137,6 +146,10 @@ awful.rules.rules = {
             },
             instance = {
                 "guvcview"
+            },
+            name = {
+                "Hearthstone",
+                "Hearthstone Deck Tracker",
             }
         },
         properties = {
@@ -144,7 +157,7 @@ awful.rules.rules = {
             tag = config.tag_names_dict["media"]
         }
     },
-    -- Set extra applications to corresponding tag
+    -- Set *EXTRA* applications to corresponding tag
     {
         rule_any = {
             class = {
@@ -155,12 +168,29 @@ awful.rules.rules = {
                 "Inkscape",
                 "krita",
                 "TeamViewer",
-                "KeePassXC"
+                "KeePassXC",
+                "Gucharmap",
+                "font-viewer",
+                "font-manager",
             }
         },
         properties = {
             screen = 1,
             tag = config.tag_names_dict["other"]
         }
+    },
+    -- Focus fix for HearthstoneDeckTracker
+    {
+        rule = {
+            name = "Hearthstone Deck Tracker"
+        },
+        properties = {
+            focus = false,
+            --focusable = false,
+            --urgent = false,
+        }
     }
+    --
 }
+
+awful.permissions.add_activate_filter(function (c) if c.name == "Hearthstone Deck Tracker" then return false end end, "permissions")

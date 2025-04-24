@@ -1,6 +1,11 @@
 local awful = require("awful")
-local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
+-- Notification library
+-- Enable hotkeys help widget for VIM and other apps
+-- when client with a matching name is opened:
+require("awful.hotkeys_popup.keys")
+
+local gears = require("gears")
 local menubar = require("menubar")
 local naughty = require("naughty")
 

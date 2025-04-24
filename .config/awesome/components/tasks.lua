@@ -1,9 +1,18 @@
+-- Import standard awesome library
 local awful = require("awful")
 local gears = require("gears")
 
-local tasks = {}
+-- Returning table which contains a list of buttons to manage tasks and
+-- a widget containing the tasklist itself.
+local tasks = {
+    buttons = nil,
+    widget = nil,
+}
+
+-- {{{ Setup task buttons
 
 tasks.buttons = gears.table.join(
+    -- Left click minimizes/maximizes or changes focus
     awful.button(
         { }, 1,
         function(c)
@@ -18,6 +27,7 @@ tasks.buttons = gears.table.join(
             end
         end
     ),
+    -- Right click shows a list of all tasks from all tags
     awful.button(
         { }, 3,
         function()
@@ -28,12 +38,14 @@ tasks.buttons = gears.table.join(
             }
         end
     ),
+    -- Scroll down changes focus to next task
     awful.button(
         { }, 4,
         function()
             awful.client.focus.byidx(1)
         end
     ),
+    -- Scroll up changes focus to previous task
     awful.button(
         { }, 5,
         function()
@@ -42,6 +54,13 @@ tasks.buttons = gears.table.join(
     )
 )
 
+-- }}}
+
+--- {{{ Setup tasklist widget
+
+-- Creates a tasklist widget on the passed screen
+-- @param screen s The screen to draw the tasklist on
+-- @return widget The tasklist widget
 tasks.widget = function (s)
     local tasklist = awful.widget.tasklist{
         screen = s,
@@ -50,5 +69,7 @@ tasks.widget = function (s)
     }
     return tasklist
 end
+
+--- }}}
 
 return tasks

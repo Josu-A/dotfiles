@@ -4,6 +4,7 @@ local config = require("components.config")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local menubar = require("menubar")
 require("awful.hotkeys_popup.keys")
+local freedesktop = require("freedesktop")
 
 local mainmenu = {}
 
@@ -35,19 +36,15 @@ local myawesomemenu = {
     },
 }
 
-mainmenu.mymainmenu = awful.menu{
-    items = {
-        {
-            "awesome",
-            myawesomemenu,
-            beautiful.awesome_icon
-        },
-        {
-            "open terminal",
-            config.terminal
-        }
-    }
-}
+mainmenu.mymainmenu = freedesktop.menu.build({
+    before = {
+        { "Awesome", myawesomemenu, beautiful.awesome_icon },
+    },
+    after = {
+        { "Open Terminal", config.terminal },
+    },
+    sub_menu = false, -- "Freedesktop",
+})
 
 mainmenu.mylauncher = awful.widget.launcher{
     image = beautiful.awesome_icon,

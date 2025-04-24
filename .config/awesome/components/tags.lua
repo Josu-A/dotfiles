@@ -1,16 +1,29 @@
+-- Import standard awesome library
 local awful = require("awful")
 local gears = require("gears")
+
+-- Import components
 local config = require("components.config")
 
-local tags = {}
+-- Returning table which contains a list of buttons to manage tags, a list of 
+-- keys to manage them and a widget containing the taglist itself.
+local tags = {
+    buttons = nil,
+    globalkeys = nil,
+    widget = nil,
+}
+
+-- {{{ Setup tags buttons
 
 tags.buttons = gears.table.join(
+    -- Left click a tag to show only tasks in it
     awful.button(
         { }, 1,
         function (t)
             t:view_only()
         end
     ),
+    -- Super + Left click to move task into the clicked tag
     awful.button(
         { config.modkey }, 1,
         function (t)
@@ -19,10 +32,12 @@ tags.buttons = gears.table.join(
             end
         end
     ),
+    -- Right click a tag to toggle visibility of tasks in it
     awful.button(
         { }, 3,
         awful.tag.viewtoggle
     ),
+    -- Super + Right click to copy a task into the clicked tag
     awful.button(
         { config.modkey }, 3,
         function (t)
@@ -31,12 +46,14 @@ tags.buttons = gears.table.join(
             end
         end
     ),
+    -- Scroll down to view tasks in next tag
     awful.button(
         { }, 4,
         function (t)
             awful.tag.viewnext(t.screen)
         end
     ),
+    -- Scroll up to view tasks in previous tag
     awful.button(
         { }, 5,
         function (t)
@@ -44,6 +61,10 @@ tags.buttons = gears.table.join(
         end
     )
 )
+
+-- }}}
+
+-- {{{ Setup tag keys
 
 tags.globalkeys = gears.table.join(
     awful.key(
@@ -72,9 +93,10 @@ tags.globalkeys = gears.table.join(
     )
 )
 
-for i = 1, 7 do
+for i = 1, #config.tag_names do
     tags.globalkeys = gears.table.join(
         tags.globalkeys,
+        -- Super + tagId to show only tasks in it
         awful.key(
             { config.modkey }, "#" .. i + 9,
             function ()
@@ -89,6 +111,7 @@ for i = 1, 7 do
                 group = "tag"
             }
         ),
+        -- Super + Control + tagId to toggle visibility of tasks in it
         awful.key(
             { config.modkey, "Control" }, "#" .. i + 9,
             function ()
@@ -103,6 +126,7 @@ for i = 1, 7 do
                 group = "tag"
             }
         ),
+        -- Super + Shift + tagId to move task into the pressed tag
         awful.key(
             { config.modkey, "Shift" }, "#" .. i + 9,
             function ()
@@ -118,6 +142,7 @@ for i = 1, 7 do
                 group = "tag"
             }
         ),
+        -- Super + Control + Shift + tagId to copy a task into the pressed tag
         awful.key(
             { config.modkey, "Control", "Shift" }, "#" .. i + 9,
             function ()
@@ -136,6 +161,13 @@ for i = 1, 7 do
     )
 end
 
+-- }}}
+
+--- {{{ Setup taglist widget
+
+-- Creates a taglist widget on the passed screen
+-- @param screen s The screen to draw the taglist on
+-- @return widget The taglist widget
 tags.widget = function (s)
     awful.tag(
         config.tag_names,
@@ -149,5 +181,7 @@ tags.widget = function (s)
     }
     return taglist
 end
+
+-- }}}
 
 return tags

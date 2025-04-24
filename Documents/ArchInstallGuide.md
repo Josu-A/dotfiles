@@ -1324,6 +1324,7 @@ Our custom awesomewm config uses:
 - `ttf-dejavu` font used by gtk and qt, `noto-fonts` font used by the window manager and terminal.
 - `awesome-wm-widget` repo, which uses the `arc-icon-theme` icons.
 - `dex`, to implement the XDG autostart policy.
+- `awesome-freedesktop-git`, nice menu.
 
 ```console
 # cd ~/.config/awesome/
@@ -1332,6 +1333,7 @@ Our custom awesomewm config uses:
 $ paru -S --noconfirm --needed nerd-fonts-noto-sans-mono
 # pacman -S --noconfirm --needed arc-icon-theme
 # pacman -S --noconfirm --needed dex
+$ paru -S --noconfirm --needed awesome-freedesktop-git
 ```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
