@@ -48,11 +48,6 @@ local leftSideWibar = function (s) return {
     spacing = wiSeperatorWidth,
     {
         layout = wibox.layout.fixed.horizontal,
-        logoutMenuWidget {
-            onlock = function ()
-                awful.spawn.with_shell('light-locker-command -l')
-            end
-        },
         mainmenu.mylauncher,
     },
     wibox.container.margin(tags.widget(s), 0, wiSeperatorWidth),
