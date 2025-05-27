@@ -88,17 +88,17 @@ local mypowermenu = {
 mainmenu.mymainmenu = freedesktop.menu.build({
     before = {
         { "Awesome", myawesomemenu, beautiful.awesome_icon },
+        { "Power", mypowermenu, POWER_ICON_DIR .. "power_w.svg" },
     },
     after = {
         { "Open Terminal", config.terminal },
-        { "Power", mypowermenu, POWER_ICON_DIR .. "power_w.svg" },
     },
     sub_menu = false, -- "Freedesktop",
 })
 
 mainmenu.mylauncher = awful.widget.launcher{
     image = beautiful.awesome_icon,
-    menu = mainmenu.mymainmenu
+    menu = mainmenu.mymainmenu,
 }
 
 menubar.utils.terminal = config.terminal -- Set the terminal for applications that require it
