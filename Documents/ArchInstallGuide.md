@@ -1890,6 +1890,14 @@ Create an empty file in `/etc/tmpfiles.d` and set the permissions to 755 to clea
 
 Finally, add udiskie to awesome's autorun.
 
+Install the following packages to transfer file from/to an android device and restart udev rules:
+
+```console
+# pacman -S android-udev mtpfs gvfs-mtp
+# udevadm control --reload
+# udevadm trigger
+```
+
 <p align="right">(<a href="#top">go to top</a>)</p>
 
 ### Others
