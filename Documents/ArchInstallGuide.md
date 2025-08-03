@@ -1893,7 +1893,7 @@ Finally, add udiskie to awesome's autorun.
 Install the following packages to transfer file from/to an android device and restart udev rules:
 
 ```console
-# pacman -S android-udev mtpfs gvfs-mtp
+# pacman -S mtpfs gvfs-mtp
 # udevadm control --reload
 # udevadm trigger
 ```
