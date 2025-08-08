@@ -154,3 +154,22 @@ find-folders() {
 
     find "$1" -type d -iname "*$2*" -print0 2>/dev/null | sort -z | xargs -0 lsd -dl
 }
+
+# Show both filesystem total space and usage
+dustf() {
+    print_title() {
+        local text="$1"
+        local text_len=${#text}
+        local width=$(tput cols)
+        local filler_len=$(( (width - text_len) / 2 ))
+        local remainder=$(( (width - text_len) % 2 ))
+        local filler=$(printf '%*s' "$filler_len" '' | tr ' ' '=')
+        echo "${filler}${text}${filler}$( [ "$remainder" -eq 1 ] && echo "=" )"
+    }
+    sudo -v
+    print_title "= Total Disk Space ="
+    df -h -T /
+    echo
+    print_title "= Disk Usage Breakdown ="
+    sudo dust -d 1 / 2>/dev/null
+}
