@@ -56,6 +56,7 @@ run_once({
     'nm-applet --indicator',-- Network manager applet to systemtray
     'udiskie -s', -- Run USB automounter and icon
     'blueman-applet', -- Run blueman bluetooth manager and icon
+    'keepassxc', -- Run password manager
     --"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1;"  -- polkit agency to allow root passwordless printer configuration
 })
 
