@@ -168,7 +168,6 @@ awful.rules.rules = {
                 "Inkscape",
                 "krita",
                 "TeamViewer",
-                "KeePassXC",
                 "Gucharmap",
                 "font-viewer",
                 "font-manager",
