@@ -1800,9 +1800,10 @@ Install the following packages to develop software:
 - `qalculate-gtk`/`qalculate-qt`: GTK/QT based calculator.
 - `units`: converts between different units.
 - `gptfdisk`: CLI partitioning tool.
+- `xdotool`: command line automation tool.
 
 ```console
-# pacman -S --noconfirm --needed npm nodejs cmake geogebra notepadqq qxmledit calc qalculate-gtk gptfdisk
+# pacman -S --noconfirm --needed npm nodejs cmake geogebra notepadqq qxmledit calc qalculate-gtk gptfdisk xdotool
 $ paru -S --noconfirm --needed eclipse-java-bin visual-studio-code-bin units
 ```
 

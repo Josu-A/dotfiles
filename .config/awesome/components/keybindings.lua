@@ -207,7 +207,13 @@ local keybindings = gears.table.join(
               function ()
                   awful.spawn.easy_async_with_shell("sleep .5; xset dpms force off", function() end)
               end,
-              {description = "Turn off screen", group = "custom"})
+              {description = "Turn off screen", group = "custom"}),
+    -- Character insertion shortcuts
+    awful.key({ config.modkey, "Shift" }, "-",
+              function()
+                  awful.spawn.with_shell("sleep 0.1 && xdotool type --clearmodifiers '—'")
+              end,
+              {description = "Insert em dash", group = "custom"})
 )
 
 return keybindings
