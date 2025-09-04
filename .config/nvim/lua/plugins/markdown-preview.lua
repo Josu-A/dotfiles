@@ -11,9 +11,11 @@ return {
     ft = {
         "markdown",
     },
-    build = function()
-        vim.fn["mkdp#util#install"]()
-        vim.cmd("!cd " .. plugin.dir .. " && npm install")
+    build = "cd app & npm install && git restore .",
+    init = function()
+        vim.g.mkdp_filetypes = { "markdown" }
+        vim.g.mkdp_browser = "/usr/bin/firefox"
+        vim.g.mkdp_echo_preview_url = 1
     end,
     opts = {},
     config = function()
@@ -24,9 +26,5 @@ return {
         map("n", "<Leader>mb", "<cmd>MarkdownPreview<cr>", "Markdown Preview Begin")
         map("n", "<Leader>ms", "<cmd>MarkdownPreviewStop<cr>", "Markdown Preview Stop")
         map("n", "<Leader>mt", "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview Toggle")
-
-        vim.g.mkdp_browser = "/usr/bin/firefox"
-        vim.g.mkdp_echo_preview_url = 1
-        vim.g.mkdp_command_for_global = 1
     end,
 }
