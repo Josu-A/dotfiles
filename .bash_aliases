@@ -41,6 +41,7 @@ alias am='alsamixer --view=all'
 
 # SSH connection shortcuts
 alias ssh-aguijos='ssh -i ~/.ssh/azurekey.pem azureuser@sgssi.aguijos.eus'
+alias ssh-ocloud='ssh -i ~/.ssh/oracle_cloud_aginagajosu.pem ubuntu@mc.aguijos.eus'
 
 # git shortcut to manage dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
