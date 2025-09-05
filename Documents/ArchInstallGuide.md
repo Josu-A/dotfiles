@@ -1237,10 +1237,10 @@ We'll install `LightDM` as our login screen manager.
 # pacman -S --noconfirm --needed lightdm
 ```
 
-We'll choose `lightdm-webkit2-greeter` as our greeter, and `lightdm-webkit-theme-litarvan` will be used as theme.
+We'll choose `web-greeter` as our greeter.
 
 ```console
-# pacman -S --noconfirm --needed lightdm-webkit2-greeter lightdm-webkit-theme-litarvan
+$ paru -Syu --needed web-greeter
 ```
 
 Enable the lightdm service.
@@ -1254,54 +1254,43 @@ Modify lightdm's configuration to use our greeter, and enable numlock within it.
 > `/etc/lightdm/lightdm.conf`
 ```ini
 [Seat:*]
-greeter-session = lightdm-webkit2-greeter
+greeter-session = web-greeter
 greeter-setup-script = /usr/bin/numlockx on
 ```
 
 Modify the greeter's configuration file.
 
-> `/etc/lightdm/lightdm-webkit2-greeter.conf`
-```ini
-#
-# [greeter]
-# debug_mode          = Greeter theme debug mode.
-# detect_theme_errors = Provide an option to load a fallback theme when theme errors are detected.
-# screensaver_timeout = Blank the screen after this many seconds of inactivity.
-# secure_mode         = Don't allow themes to make remote http requests.
-# time_format         = A moment.js format string so the greeter can generate localized time for display.
-# time_language       = Language to use when displaying the time or "auto" to use the system's language.
-# webkit_theme        = Webkit theme to use.
-#
-# NOTE: See moment.js documentation for format string options: http://momentjs.com/docs/#/displaying/format/
-#
+> `/etc/lightdm/web-greeter.yml`
+```yml
+branding:
+    background_images_dir: /usr/share/backgrounds
+    logo_image: /usr/share/pixmaps/archlinux-logo.svg
+    user_image: /usr/share/web-greeter/themes/default/img/antergos.png
 
-[greeter]
-debug_mode          = false
-detect_theme_errors = true
-screensaver_timeout = 300
-secure_mode         = true
-time_format         = LT
-time_language       = auto
-webkit_theme = litarvan
+greeter:
+    debug_mode: True
+    detect_theme_errors: True
+    screensaver_timeout: 300
+    secure_mode: True
+    theme: gruvbox
+    icon_theme:
+    time_language:
 
-#
-# [branding]
-# background_images = Path to directory that contains background images for use by themes.
-# logo              = Path to logo image for use by greeter themes.
-# user_image        = Default user image/avatar. This is used by themes for users that have no .face image.
-#
-# NOTE: Paths must be accessible to the lightdm system user account (so they cannot be anywhere in /home)
-#
+layouts:
+    - es
+    - us
 
-[branding]
-background_images = /usr/share/backgrounds
-logo              = /usr/share/pixmaps/archlinux-logo.svg
-user_image        = /usr/share/pixmaps/archlinux-user.svg
+features:
+    battery: True
+    backlight:
+        enabled: True
+        value: 10
+        steps: 0
 ```
 
-Now, we'll install a session locker.
-
 Add a background image into the `/usr/share/backgrounds` folder.
+
+Now, we'll install a session locker.
 
 ```console
 # pacman -S --noconfirm --needed light-locker

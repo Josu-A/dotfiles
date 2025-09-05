@@ -49,7 +49,8 @@ awful.spawn.with_shell(
     '"${XDG_CONFIG_HOME:-$HOME/.config}/autostart:${XDG_CONFIG_DIRS:-/etc/xdg}/autostart";' ..
     'setxkbmap -layout "es";' .. -- Set keyboard layouts
     'numlockx on;' .. -- Activate NumLock
-    'picom -b;' -- Run compositor in background
+    'picom -b;' .. -- Run compositor in background
+    'light-locker;' -- Run lightlocker
 )
 
 run_once({
