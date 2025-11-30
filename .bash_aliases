@@ -32,6 +32,9 @@ alias vivaldi-stable='vivaldi-stable --force-dark-mode'
 # Shortcuts for executables
 alias objectdb-explorer='java -jar /opt/objectdb/bin/explorer.jar'
 
+# Pacman shortcuts
+alias pacman-all='LC_ALL=C.UTF-8 pacman -Qi | awk '\''/^Name/{name=$3} /^Installed Size/{print $4$5, name}'\'' | LC_ALL=C.UTF-8 sort -h'
+
 # VPN connection shortcut
 alias ehu-vpn-up='nmcli --ask connection up f6c3cecc-7d0b-4706-b4b2-0bdc00d98e96'
 alias ehu-vpn-down='nmcli connection down f6c3cecc-7d0b-4706-b4b2-0bdc00d98e96'
@@ -42,6 +45,7 @@ alias am='alsamixer --view=all'
 # SSH connection shortcuts
 alias ssh-aguijos='ssh -i ~/.ssh/azurekey.pem azureuser@sgssi.aguijos.eus'
 alias ssh-ocloud='TERM=xterm-256color ssh -i ~/.ssh/oracle_cloud_aginagajosu.pem ubuntu@mc.aguijos.eus'
+alias ssh-abd='TERM=xterm-256color ssh -i ~/.ssh/ssh-aguinaga-01-key-2025-2026 opc@abd.aguijos.eus'
 
 # git shortcut to manage dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'

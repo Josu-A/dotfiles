@@ -135,6 +135,12 @@
                 <li><a href="#touchpad">Touchpad</a></li>
             </ol>
         </li>
+        <li><a href="#commands">Commands</a>
+            <hr/>
+            <ol>
+                <li><a href="#pacman-commands">Pacman Commands</a></li>
+            </ol>
+        </li>
     </ol>
 </details>
 
@@ -2066,5 +2072,72 @@ Section "InputClass"
     Option "TappingDrag" "true"
 EndSection
 ```
+
+<p align="right">(<a href="#top">go to top</a>)</p>
+
+## Commands
+
+### Pacman Commands
+
+#### Uninstalling
+
+Uninstall a package with:
+
+- `R`: remove
+- `c` / `u`: cascade / avoid removing packages if other packages depend on it
+- `n`: don't save configuration files (dotfiles not included)
+- `s`: remove dependencies
+
+```bash
+sudo pacman -R(c|u)ns <package>
+```
+
+#### Installing
+
+Install a package with:
+
+- `S`: query sync database
+- `--asdeps`: install the package as a dependency
+
+```bash
+sudo pacman -S <package>
+```
+
+#### System upgrade
+
+Upgrade the system with:
+
+- `S`: query sync database
+- `y`: update database
+- `u`: upgrade
+
+```bash
+sudo pacman -Syu
+```
+
+#### Cleanup package cache
+
+To remove all cached versions of uninstalled packages run:
+
+- `r`: remove
+- `u`: only uninstalled
+- `k0`: keep no cached versions
+
+```bash
+sudo paccache -ruk0
+```
+
+To remove cached versions but the last one run:
+
+- `r`: remove
+- `k1`: keep only the last cached version
+
+```bash
+sudo paccache -rk1
+```
+
+#### Print
+
+Add the `-p` flag to any `-(S|U|R)` action to instead print the action to be taken instead of running it.
 
 <p align="right">(<a href="#top">go to top</a>)</p>
