@@ -39,16 +39,15 @@ awful.rules.rules = {
                 "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size
                 "Wpa_gui",
                 "veromix",
-                "xtightvncviewer"
-            },
-            name = {
-                "Event Tester", -- xev
                 "Compress" -- File Roller nemo compress interagration
             },
             role = {
                 "AlarmWindow", -- Thunderbird's calendar
                 "ConfigManager", -- Thunderbird's about:config
                 "pop-up" -- e.g. Google Chrome's (detached) Developer Tools
+            },
+            name = {
+                "Friends List" -- Steam's friend list
             }
         },
         properties = {
@@ -163,6 +162,7 @@ awful.rules.rules = {
             class = {
                 "thunderbird",
                 "discord",
+                "vesktop",
                 "Blender",
                 "Gimp",
                 "Inkscape",

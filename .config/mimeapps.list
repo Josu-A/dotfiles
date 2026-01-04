@@ -1,5 +1,8 @@
 [Added Associations]
+text/csv=nvim.desktop;
+
 [Removed Associations]
+
 [Default Applications]
 application/gzip=org.gnome.FileRoller.desktop
 application/java-archive=java-java-openjdk.desktop
@@ -63,3 +66,4 @@ text/x-tex=nvim.desktop
 video/mp4=mpv.desktop
 x-scheme-handler/computer=nemo.desktop
 x-scheme-handler/trash=nemo.desktop
+x-scheme-handler/discord=vesktop.desktop

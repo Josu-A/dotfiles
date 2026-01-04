@@ -1706,9 +1706,11 @@ Install communication tools with:
 
 - `discord`: text and voice chat communication tool.
 - `thunderbird`: email client.
+    - `systray-x-common` (AUR): thunderbird systray icon.
 
 ```console
 # pacman -S --noconfirm --needed discord thunderbird
+$ paru -S --noconfirm --needed systray-x-common
 ```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
@@ -1817,6 +1819,19 @@ Nemo also has extensions that can be installed, such as `nemo-fileroller`, `nemo
 
 ```console
 # pacman -S --noconfirm --needed nemo nemo-fileroller nemo-preview nemo-share lf trash-cli
+```
+
+Change the default terminal for nemo and set the correct execution flag for scripts.
+
+```console
+$ gsettings set org.cinnamon.desktop.default-applications.terminal exec alacritty
+$ gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg "-e"
+```
+
+And perform the following symlink to fix some stupid 14 yo bug.
+
+```console
+# ln -s /usr/bin/alacritty /usr/bin/kgx
 ```
 
 Create a user unit that will be called by a user timer, which will delete trashed files older than specified.

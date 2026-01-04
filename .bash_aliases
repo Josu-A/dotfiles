@@ -35,6 +35,9 @@ alias objectdb-explorer='java -jar /opt/objectdb/bin/explorer.jar'
 # Pacman shortcuts
 alias pacman-all='LC_ALL=C.UTF-8 pacman -Qi | awk '\''/^Name/{name=$3} /^Installed Size/{print $4$5, name}'\'' | LC_ALL=C.UTF-8 sort -h'
 
+# AUR
+alias checkaurupdates='paru -Qua'
+
 # VPN connection shortcut
 alias ehu-vpn-up='nmcli --ask connection up f6c3cecc-7d0b-4706-b4b2-0bdc00d98e96'
 alias ehu-vpn-down='nmcli connection down f6c3cecc-7d0b-4706-b4b2-0bdc00d98e96'
