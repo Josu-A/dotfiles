@@ -74,6 +74,8 @@ alias b-aliases='nvim ~/.bash_aliases'
 alias b-rc='nvim ~/.bashrc'
 alias b-profile='nvim ~/.bash_profile'
 
+# window manager
+alias awesome-config='cd $HOME/.config/awesome && nvim ./rc.lua'
 
 #
 # Bash functions

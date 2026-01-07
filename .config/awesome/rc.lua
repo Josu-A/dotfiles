@@ -36,7 +36,8 @@ root.keys(
 -- @param table cmd_arr List of commands to run
 local function run_once(cmd_arr)
     for _, cmd in ipairs(cmd_arr) do
-        awful.spawn.with_shell(string.format("pgrep -u $USER -fx '%s' > /dev/null || (%s)", cmd, cmd))
+        local program = cmd:match("^(%S+)")
+        awful.spawn.with_shell(string.format("pgrep -u $USER -x '%s' > /dev/null || (%s)", program, cmd))
     end
 end
 
