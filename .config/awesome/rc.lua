@@ -58,7 +58,7 @@ run_once({
     'nm-applet --indicator',-- Network manager applet to systemtray
     'blueman-applet', -- Run blueman bluetooth manager and icon
     'keepassxc', -- Run password manager
-    'thunderbird', -- Run mail
+    --(TODO) this is broken, ui doesn't load'thunderbird', -- Run mail
     'udiskie -s', -- Run USB automounter and icon
     --"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1;"  -- polkit agency to allow root passwordless printer configuration
 })

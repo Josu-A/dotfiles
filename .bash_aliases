@@ -56,6 +56,7 @@ alias dotfiless='dotfiles status'
 alias dotfilesa='dotfiles add -u'
 alias dotfilesc='dotfiles commit -m'
 alias dotfilesp='dotfiles push'
+alias dotedit='dotfiles ls-tree -r --name-only HEAD | fzf --ansi --preview "bat --color=always $HOME/{}" --bind "enter:execute($EDITOR $HOME/{} < /dev/tty)"'
 
 # git shortcuts to manage etcfiles
 alias etcfiles='/usr/bin/git --git-dir=$HOME/.etcfiles --work-tree=/etc'
@@ -63,6 +64,7 @@ alias etcfiless='etcfiles status'
 alias etcfilesa='etcfiles add -u'
 alias etcfilesc='etcfiles commit -m'
 alias etcfilesp='etcfiles push'
+alias etcedit='etcfiles ls-tree -r --name-only HEAD | fzf --ansi --preview "bat --color=always /etc/{}" --bind "enter:execute(sudo $EDITOR /etc/{} < /dev/tty)"'
 
 # nvim
 alias vim='nvim'

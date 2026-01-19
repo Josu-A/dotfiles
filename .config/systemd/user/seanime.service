@@ -1,0 +1,16 @@
+[Unit]
+Description=Seanime Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/seanime
+Restart=always
+RestartSec=5
+TimeoutStartSec=60
+Environment="DISPLAY=:0"
+Environment="XDG_RUNTIME_DIR=/run/user/%U"
+
+[Install]
+WantedBy=default.target

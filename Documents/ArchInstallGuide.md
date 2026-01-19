@@ -376,8 +376,7 @@ Mount the `root` partition into `/mnt`.
 Mount the `boot` partition into `/mnt/boot`.
 
 ```console
-# mkdir -p /mnt/boot/efi
-# mount -t vfat -L EFIBOOT /mnt/boot
+# mount --mkdir -t vfat -L EFIBOOT /mnt/boot
 ```
 
 <p align="right">(<a href="#top">go to top</a>)</p>
@@ -388,7 +387,7 @@ Create a swap file.
 
 ```console
 # mkdir /mnt/swap
-# mkswap -U clear --size 8G --file /swap/swapfile
+# mkswap -U clear --size 8G --file /mnt/swap/swapfile
 ```
 
 Activate the swap file:
@@ -617,13 +616,14 @@ Create a new user with, which will have its default shell set to `bash`, and be 
 - `storage` — Access to removable drives.
 
 ```console
-# useradd -m -G wheel,storage -s /bin/bash ${USER}
+# USERNAME="josu"
+# useradd -m -G wheel,storage -s /bin/bash ${USERNAME}
 ```
 
 Set a password to it
 
 ```console
-# passwd ${USER}
+# passwd ${USERNAME}
 ```
 
 Add sudo rights to wheel group
@@ -920,9 +920,9 @@ Install `paru`, which is an AUR helper, making downloads from the AUR easier.
 ```console
 # cd /opt
 # git clone https://aur.archlinux.org/paru.git
-# chown ${USER}:${USER} paru
+# chown ${USERNAME}:${USERNAME} paru
 # cd paru
-# su ${USER}
+# su ${USERNAME}
 $ makepkg -sri
 ```
 
@@ -940,7 +940,7 @@ Install `xdg-user-dirs` which will automatically enable the `xdg-user-dirs-updat
 
 ```console
 # pacman -S --needed xdg-user-dirs
-# su ${USER}
+# su ${USERNAME}
 $ LC_ALL=C.UTF-8 xdg-user-dirs-update --force
 ```
 
@@ -1126,6 +1126,12 @@ turbo = auto
 governor = powersave
 energy_performance_preference = power
 turbo = auto
+```
+
+Disabe GNOME Power Profiles daemon manually just in case.
+
+```console
+# systemctl mask power-profiles-daemon.service
 ```
 
 Enable its daemon.
@@ -1462,7 +1468,7 @@ $ systemctl --user --now enable playerctld.service
 Media control from bluetooth headsets and similar devices may be forwarded to MPRIS. Install `bluez-utils` for it.
 
 ```console
-# pacman -S --noconfirm --needed bluez-utils
+# pacman -S --noconfirm --needed bluez bluez-utils
 ```
 
 Create a service to automatically enable its deamon.
@@ -1871,7 +1877,7 @@ $ systemctl enable --user --now trash-cleanup.timer
 To have user services run at boot instead of login, we can enable lingering for a particular user.
 
 ```console
-# loginctl enable-linger ${USER}
+# loginctl enable-linger ${USERNAME}
 ```
 
 Install `udiskie` which is a removable disk automounter which uses udisks2.
@@ -1973,17 +1979,27 @@ If connected via USB, check if the printer is detected with `lsusb`.
 
 #### Configuration
 
-Simplest way of using cups is to install `system-config-printer`, which is a GUI that helps us configure the desired printer.
+Simplest way of using cups is to install `system-config-printer` and `cups-pk-helper` for polkit, which is a GUI that helps us configure the desired printer.
 
 ```console
-# pacman -S --noconfirm --needed system-config-printer
+# pacman -S --noconfirm --needed system-config-printer cups-pk-helper
 ```
 
 To be able to print without having to input the root password every time, add the user to the `cups` group, or `lp` group if cups version is below 2.2.6-2.
 
 ```console
-# usermod -aG cups ${USER}
-# usermod -aG lp ${USER}
+# usermod -aG cups ${USERNAME}
+# usermod -aG lp ${USERNAME}
+```
+
+> `/etc/polkit-1/rules.d/49-allow-passwordless-printer-admin.rules`
+```ini
+polkit.addRule(function(action, subject) { 
+    if (action.id == "org.opensuse.cupspkhelper.mechanism.all-edit" && 
+        subject.isInGroup("wheel")){ 
+        return polkit.Result.YES; 
+    } 
+});
 ```
 
 Set the default paper size to `a4` (default is `letter`, disgusting).
@@ -2018,7 +2034,7 @@ The `light` package will be used to increase and decrease the brightness of the 
 Add the user to the `video` group:
 
 ```console
-# usermod -aG video ${USER}
+# usermod -aG video ${USERNAME}
 ```
 
 Set the minimum brightness of the screen to avoid going blank.
