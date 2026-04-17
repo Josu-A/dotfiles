@@ -26,3 +26,4 @@ create_autocmd("VimEnter", lazynvim_autoupdate, function()
         require("lazy").update({ show = false, })
     end
 end)
+

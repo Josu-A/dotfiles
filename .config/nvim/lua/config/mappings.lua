@@ -27,3 +27,6 @@ map("n", "[d", vim.diagnostic.goto_prev, "Go to previous diagnostic")
 map("n", "]d", vim.diagnostic.goto_next, "Go to next diagnostic")
 -- TODO: What the fuck is this
 map("n", "<Space>q", vim.diagnostic.setloclist, "What the fuck is this")
+
+-- Exit terminal mode
+map("t", "<Esc>", "<C-\\><C-n>", "Exit Terminal mode")

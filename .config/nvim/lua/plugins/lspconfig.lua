@@ -88,17 +88,18 @@ return {
             end
             require("which-key").add({
                 { "<Leader>W", group = "Workspace" },
+                { "<Leader>j", group = "Jump" },
             })
 
-            nMap("gD", buf.declaration, "Jumps to the declaration of the symbol under the cursor")
-            nMap("gd", buf.definition, "Jumps to the definiton of the symbol under the cursor")
+            nMap("<Leader>jD", buf.declaration, "Jumps to the declaration of the symbol under the cursor")
+            nMap("<Leader>jd", buf.definition, "Jumps to the definiton of the symbol under the cursor")
             nMap("K", buf.hover, "Displays hover information about the symbol under te cursor")
             nMap("gi", buf.implementation, "List all the implementations for the symbol under the cursor")
             nMap("gs", buf.signature_help, "Displays signature information about the symbol under the cursor")
             nMap("<Leader>Wa", buf.add_workspace_folder, "Add a folder to the workspace")
             nMap("<Leader>Wr", buf.remove_workspace_folder, "Remove a folder from the workspace")
             nMap("<Leader>Wl", function () print(vim.inspect(buf.list_workspace_folders())) end, "List workspace folders")
-            nMap("gtd", buf.type_definition, "Jumps to the definition of the type of the symbol under the cursor")
+            nMap("<Leader>jd", buf.type_definition, "Jumps to the definition of the type of the symbol under the cursor")
             nMap("<Leader>r", buf.rename, "Renames all references to the symbol under the cursor")
             nMap("gr", buf.references, "Lists all references to the symbol under the cursor")
             nMap("<Leader>f", function () buf.format { async = true } end, "Format current buffer using the LS")

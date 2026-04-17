@@ -1,6 +1,6 @@
 return {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
+    version = "*",
     event = "VeryLazy",
     dependencies = {
         -- Make sure to install `ripgrep` in OS
@@ -36,13 +36,21 @@ return {
         },
         {
             "<Leader>ps",
-            function()
-                require("telescope.builtin").grep_string({
-                    search = vim.fn.input("Grep > ")
-                })
-            end,
+            require("telescope.builtin").live_grep,
             desc = "Search words inside project files",
             silent = true,
         },
+        {
+            "<Leader>pb",
+            require("telescope.builtin").buffers,
+            desc = "Find buffered files",
+            silent = true,
+        },
+        {
+            "<Leader>ph",
+            require("telescope.builtin").help_tags,
+            desc = "Find help tags",
+            silent = true,
+        }
     },
 }

@@ -1,82 +1,45 @@
+local langs = {
+    "ada",
+    "bash", "bibtex",
+    "c", "c_sharp", "cmake", "cpp", "css", "csv",
+    "desktop", "diff", "dockerfile",
+    "editorconfig",
+    "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore",
+    "go", "gpg",
+    "haskell", "html",
+    "java", "javascript", "json",
+    "latex", "lua", "luadoc",
+    "make", "markdown",
+    "nginx",
+    "php", "phpdoc", "powershell", "prisma", "pug", "python",
+    "rust",
+    "scss", "sql",
+    "toml", "typescript", "tsx",
+    "vim", "vimdoc",
+    "xcompose", "xml",
+    "yaml",
+}
+
 return {
     "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
-    opts = {
-        -- A list of parser names, or "all"
-        ensure_installed = {
-            "ada",
-            "bash",
-            "bibtex",
-            "c",
-            "c_sharp",
-            "cmake",
-            "cpp",
-            "css",
-            "csv",
-            "desktop",
-            "diff",
-            "dockerfile",
-            "editorconfig",
-            "git_config",
-            "git_rebase",
-            "gitattributes",
-            "gitcommit",
-            "gitignore",
-            "go",
-            "gpg",
-            "haskell",
-            "html",
-            "java",
-            "javascript",
-            "json",
-            "latex",
-            "lua",
-            "luadoc",
-            "make",
-            "markdown",
-            "nginx",
-            "php",
-            "phpdoc",
-            "powershell",
-            "pug",
-            "python",
-            "rust",
-            "scss",
-            "sql",
-            "toml",
-            "typescript",
-            "tsx",
-            "vim",
-            "vimdoc",
-            "xcompose",
-            "xml",
-            "yaml",
-        },
-
-        -- Install parsers syncrhonously (only applied to `ensure_installed`)
-        sync_install = false,
-
-        -- Automatically install missing parsers when entering buffer
-        -- Recommendation: set to fase if you don't have `tree-sitter` CLI intalled locally
-        auto_install = true,
-
-        -- List of parsers to ignore installing (or "all")
-        ignore_install = { },
-
-        ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-        -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-
-        highlight = {
-            enable = true,
-
-            disable = { },
-
-            -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-            -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-            -- Using this option may slow down your editor, and you may see some duplicate highlights.
-            -- Instead of true it can also be a list of languages
-            additional_vim_regex_highlighting = false,
-        }
-    },
+    config = function()
+        require("nvim-treesitter").setup({
+            install_dir = vim.fn.stdpath("data") .. "/site",
+        })
+        require('nvim-treesitter').install(langs)
+        -- Treesitter highlighting
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = langs,
+            callback = function(args)
+                local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+                if lang then
+                    pcall(vim.treesitter.start, args.buf, lang)
+                end
+            end,
+          --callback = function() vim.treesitter.start() end,
+        })
+    end,
 }

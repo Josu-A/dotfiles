@@ -1,10 +1,21 @@
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
-        "nvim-tree/nvim-web-devicons"
+        "nvim-tree/nvim-web-devicons",
+        "folke/trouble.nvim",
     },
-    opts = {
-        options = {
+    opts = function(_, opts)
+        local trouble = require("trouble")
+        local symbols = trouble.statusline({
+            mode = "lsp_document_symbols",
+            groups = {},
+            title = false,
+            filter = { range = true },
+            format = "{kind_icon}{symbol.name:Normal}",
+            hl_group = "lualine_c_normal",
+        })
+
+        opts.options = {
             icons_enabled = true,
             theme = 'material',
             component_separators = { left = '', right = ''},
@@ -21,26 +32,31 @@ return {
                 tabline = 1000,
                 winbar = 1000,
             }
-        },
-        sections = {
+        }
+        opts.sections = {
             lualine_a = {'mode'},
             lualine_b = {'branch', 'diff', 'diagnostics'},
             lualine_c = {'filename'},
             lualine_x = {'encoding', 'fileformat', 'filetype'},
             lualine_y = {'progress'},
             lualine_z = {'location'}
-        },
-        inactive_sections = {
+        }
+        opts.inactive_sections = {
             lualine_a = {},
             lualine_b = {},
             lualine_c = {'filename'},
             lualine_x = {'location'},
             lualine_y = {},
             lualine_z = {}
-        },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        extensions = {}
-    },
+        }
+        opts.tabline = {}
+        opts.winbar = {}
+        opts.inactive_winbar = {}
+        opts.extensions = {}
+
+        table.insert(opts.sections.lualine_c, {
+            symbols.get,
+            cond = symbols.has,
+        })
+    end,
 }

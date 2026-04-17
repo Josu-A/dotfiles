@@ -1,5 +1,6 @@
 return {
     "folke/trouble.nvim",
+    build = "git apply ~/.config/nvim/patches/trouble-616.patch",
     event = "VeryLazy",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
@@ -17,50 +18,38 @@ return {
     keys = {
         {
             "<Leader>tx",
-            function()
-                require("trouble").toggle()
-            end,
-            desc = "Toggle trouble",
+            "<cmd>Trouble diagnostics toggle<cr>",
+            desc = "Toggle trouble diagnostics",
             silent = true,
         },
         {
-            "<Leader>tw",
-            function()
-                require("trouble").toggle("workspace_diagnostics")
-            end,
-            desc = "Toggle workspace diagnostics",
-            silent = true,
-        },
-        {
-            "<Leader>td",
-            function()
-                require("trouble").toggle("document_diagnostics")
-            end,
-            desc = "Toggle document diagnostics",
+            "<Leader>tb",
+            "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+            desc = "Toggle buffer diagnostics",
             silent = true,
         },
         {
             "<Leader>tq",
-            function()
-                require("trouble").toggle("quickfix")
-            end,
+            "<cmd>Trouble qflist toggle<cr>",
             desc = "Toggle quickfix",
             silent = true,
         },
         {
             "<Leader>tl",
-            function()
-                require("trouble").toggle("loclist")
-            end,
-            desc = "Toggle loclist",
+            "<cmd>Trouble loclist toggle<cr>",
+            desc = "Toggle location list",
             silent = true,
         },
         {
-            "gR",
-            function()
-                require("trouble").toggle("lsp_references")
-            end,
+            "<Leader>tr",
+            "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
             desc = "Toggle LSP references",
+            silent = true,
+        },
+        {
+            "<Leader>ts",
+            "<cmd>Trouble symbols toggle focus=false<cr>",
+            desc = "Toggle Symbols",
             silent = true,
         },
     },
