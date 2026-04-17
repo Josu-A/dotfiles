@@ -31,17 +31,24 @@ return {
                 "bashls", -- Bash
                 "clangd", -- C
                 "cssls", -- CSS
+                "docker_compose_language_service",
+                "docker_language_server",
+                "dockerls", -- Docker
                 "html", -- HTML
                 "ts_ls", -- JavaScript / TypeScript
-                "jdtls", -- Java
+                "java_language_server", -- Java
                 "jsonls", -- JSON
                 "ltex", -- Latex
                 "texlab",
                 "lua_ls", -- Lua
                 "marksman", -- Markdown
+                "nginx_language_server", -- Nginx
+                "prismals", -- Prisma
+                "pug-lsp", -- Pug
                 "pyright", -- Python
                 "sqls", -- SQL
                 "taplo", -- TOML
+                "vimls", -- Vim
                 "lemminx" -- XML
             },
             handlers = {
