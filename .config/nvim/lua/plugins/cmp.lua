@@ -24,16 +24,9 @@ return {
             preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
             window = {
                 completion = {
-                    border = 'rounded',
-                    winhighlight = 'Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None,PmenuSbar:PmenuSbar,PmenuThumb:PmenuThumb',
+                    winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
                     scrollbar = false,
                 },
-                documentation = {
-                    border = 'rounded',
-                    winhighlight = 'Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
-                },
-                --completion = cmp.config.window.bordered(),
-                --documentation = cmp.config.window.bordered()
             },
             formatting = {
                 format = function(entry, item)
