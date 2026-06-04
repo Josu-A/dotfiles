@@ -33,6 +33,7 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 
 # Java
+export JAVA_HOME="/usr/lib/jvm/default"
 export JAVA_TOOL_OPTIONS="-Dawt.useSystemAAFontSettings=gasp -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 #SILENT_JAVA_OPTIONS="$JAVA_TOOL_OPTIONS"
 #unset JAVA_TOOL_OPTIONS
