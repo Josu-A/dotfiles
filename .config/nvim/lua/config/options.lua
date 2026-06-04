@@ -47,3 +47,6 @@ wo.colorcolumn = "80"
 
 -- Enable 24 bit coloring
 go.termguicolors = true
+
+-- Popup styling
+o.winborder = "rounded"

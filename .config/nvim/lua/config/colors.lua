@@ -86,5 +86,6 @@ end
 
 load_colorscheme(Schemes.colorschemes.catppuccin_mocha, false)
 
-vim.api.nvim_set_hl(0, 'FlatBorder', { fg = '#89b4fa', bg = 'NONE' })
-vim.api.nvim_set_hl(0, 'CmpBorder', { fg = '#89b4fa', bg = '#1e1e2e' })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#89b4fa", bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "CmpBorder",   { fg = "#89b4fa", bg = "#1e1e2e" })
